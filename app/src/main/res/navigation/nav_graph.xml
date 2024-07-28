@@ -33,7 +33,9 @@
             android:id="@+id/action_editNoteFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
 
-        <argument app:argType=""
+        <argument
+            android:name="note"
+            app:argType="com.swamyiphyo.thenotesappmvvmroomdatabase.model.Note"
             app:nullable="true"/>
     </fragment>
 </navigation>
