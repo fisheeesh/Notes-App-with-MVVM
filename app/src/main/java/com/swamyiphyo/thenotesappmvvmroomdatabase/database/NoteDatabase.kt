@@ -1,5 +1,4 @@
-
-package com.swamyiphyo.thenotesappmvvmroomdatabase. database
+package com.swamyiphyo.thenotesappmvvmroomdatabase.database
 
 import android.content.Context
 import androidx.room.Database
@@ -9,7 +8,7 @@ import com.swamyiphyo.thenotesappmvvmroomdatabase.model.Note
 
 @Database(entities = [Note::class], version = 1)
 abstract class NoteDatabase : RoomDatabase(){
-    //which declare NoteDao interface instance
+    //which declare the instance of noteDAO
     abstract fun getNoteDao() : NoteDao
 
     companion object{
@@ -24,7 +23,6 @@ abstract class NoteDatabase : RoomDatabase(){
                 instance = it
             }
         }
-
         private fun createDatabase(context: Context) =
             Room.databaseBuilder(
                 context.applicationContext,
@@ -32,4 +30,5 @@ abstract class NoteDatabase : RoomDatabase(){
                 "note_db"
             ).build()
     }
+
 }
