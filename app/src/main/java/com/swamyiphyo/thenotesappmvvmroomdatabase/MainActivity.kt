@@ -14,7 +14,7 @@ import com.swamyiphyo.thenotesappmvvmroomdatabase.viewmodel.NoteViewModelFactory
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mainBinding: ActivityMainBinding
-    lateinit var viewModel: NoteViewModel
+    lateinit var noteViewModel: NoteViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +26,6 @@ class MainActivity : AppCompatActivity() {
     private fun setUpViewModel(){
         val noteRepo = NoteRepository(NoteDatabase(this))
         val viewModelProviderFactory = NoteViewModelFactory(application, noteRepo)
-        viewModel = ViewModelProvider(this, viewModelProviderFactory)[NoteViewModel::class.java]
+        noteViewModel = ViewModelProvider(this, viewModelProviderFactory)[NoteViewModel::class.java]
     }
 }
