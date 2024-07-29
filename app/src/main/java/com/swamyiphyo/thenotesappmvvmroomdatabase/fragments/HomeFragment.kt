@@ -18,6 +18,7 @@ import com.swamyiphyo.thenotesappmvvmroomdatabase.MainActivity
 import com.swamyiphyo.thenotesappmvvmroomdatabase.R
 import com.swamyiphyo.thenotesappmvvmroomdatabase.adapter.NoteAdapter
 import com.swamyiphyo.thenotesappmvvmroomdatabase.databinding.FragmentHomeBinding
+import com.swamyiphyo.thenotesappmvvmroomdatabase.model.Note
 import com.swamyiphyo.thenotesappmvvmroomdatabase.viewmodel.NoteViewModel
 
 class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextListener, MenuProvider {
@@ -50,7 +51,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
         }
     }
 
-    private fun updateUI(notes: List<com.swamyiphyo.thenotesappmvvmroomdatabase.model.Note>){
+    private fun updateUI(notes: List<Note>){
         if(notes != null){
             if(notes.isNotEmpty()){
                 binding.mainRV.visibility = View.VISIBLE

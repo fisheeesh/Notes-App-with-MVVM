@@ -8,15 +8,16 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.swamyiphyo.thenotesappmvvmroomdatabase.R
 import com.swamyiphyo.thenotesappmvvmroomdatabase.databinding.ListNotesBinding
+import com.swamyiphyo.thenotesappmvvmroomdatabase.model.Note
 
 
 class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
     class NoteViewHolder(val binding : ListNotesBinding) : RecyclerView.ViewHolder(binding.root){
     }
-    private val differCallback = object : DiffUtil.ItemCallback<com.swamyiphyo.thenotesappmvvmroomdatabase.model.Note>(){
+    private val differCallback = object : DiffUtil.ItemCallback<Note>(){
         override fun areItemsTheSame(
-            oldItem: com.swamyiphyo.thenotesappmvvmroomdatabase.model.Note,
-            newItem: com.swamyiphyo.thenotesappmvvmroomdatabase.model.Note
+            oldItem: Note,
+            newItem: Note
         ): Boolean {
             return oldItem.id == newItem.id &&
                     oldItem.noteTitle == newItem.noteTitle &&
@@ -24,8 +25,8 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
         }
 
         override fun areContentsTheSame(
-            oldItem: com.swamyiphyo.thenotesappmvvmroomdatabase.model.Note,
-            newItem: com.swamyiphyo.thenotesappmvvmroomdatabase.model.Note
+            oldItem: Note,
+            newItem: Note
         ): Boolean {
             return oldItem == newItem
         }
