@@ -31,11 +31,11 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
         }
     }
     val differ = AsyncListDiffer(this, differCallback)
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder =
         NoteViewHolder(ListNotesBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
     override fun getItemCount(): Int = differ.currentList.size
-
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         val currentNote = differ.currentList[position]
