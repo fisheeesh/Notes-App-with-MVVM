@@ -13,13 +13,11 @@ import com.swamyiphyo.thenotesappmvvmroomdatabase.viewmodel.NoteViewModel
 import com.swamyiphyo.thenotesappmvvmroomdatabase.viewmodel.NoteViewModelFactory
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var mainBinding: ActivityMainBinding
     lateinit var noteViewModel: NoteViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mainBinding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(mainBinding.root)
+        setContentView(R.layout.activity_main)
 
         setUpViewModel()
     }
