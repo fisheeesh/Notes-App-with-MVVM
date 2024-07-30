@@ -2,6 +2,7 @@ package com.swamyiphyo.thenotesappmvvmroomdatabase.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -44,6 +45,8 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
         holder.binding.textViewTitle.text = currentNote.noteTitle
         holder.binding.textViewContent.text = currentNote.noteContent
+        val animation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.translate_anim)
+        holder.itemView.animation = animation
 
         holder.itemView.setOnClickListener (){
             val direction = HomeFragmentDirections.actionHomeFragmentToEditNoteFragment(currentNote)

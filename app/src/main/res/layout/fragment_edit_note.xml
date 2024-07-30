@@ -64,7 +64,7 @@
             android:focusable="true"
             android:backgroundTint="@color/pink"
             android:tintMode="@color/white"
-            android:src="@drawable/baseline_mode_edit_24"
+            android:src="@drawable/baseline_save_alt_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
