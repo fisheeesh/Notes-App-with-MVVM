@@ -23,42 +23,41 @@ import com.swamyiphyo.thenotesappmvvmroomdatabase.viewmodel.NoteViewModel
 
 class EditNoteFragment : Fragment(R.layout.fragment_edit_note), MenuProvider {
 
-    private var editNoteBinding : FragmentEditNoteBinding? = null
+    private var editNoteBinding: FragmentEditNoteBinding? = null
     private val binding get() = editNoteBinding!!
 
-    private lateinit var noteViewModel : NoteViewModel
-    private lateinit var currentNote : Note
+    private lateinit var noteViewModel: NoteViewModel
+    private lateinit var currentNote: Note
 
-    private val args : EditNoteFragmentArgs by navArgs()
+    private val args: EditNoteFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         editNoteBinding = FragmentEditNoteBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val menuHost : MenuHost = requireActivity()
+        val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
         noteViewModel = (activity as MainActivity).noteViewModel
 
-        currentNote = args.note ?: return
+        currentNote = args.note!! ?: return
 
         binding.editTextTitleUpdate.setText(currentNote.noteTitle)
         binding.editTextContentUpdate.setText(currentNote.noteContent)
 
-        binding.fabEdit.setOnClickListener(){
+        binding.fabEdit.setOnClickListener {
             val noteTitle = binding.editTextTitleUpdate.text.toString().trim()
             val noteContent = binding.editTextContentUpdate.text.toString().trim()
 
-            if(noteTitle.isEmpty() || noteContent.isEmpty()){
+            if (noteTitle.isEmpty() || noteContent.isEmpty()) {
                 Toast.makeText(context, "Please enter all the fields.", Toast.LENGTH_SHORT).show()
-            }
-            else{
+            } else {
                 val note = Note(currentNote.id, noteTitle, noteContent)
                 noteViewModel.updateNote(note)
                 view.findNavController().popBackStack(R.id.homeFragment, false)
@@ -67,13 +66,11 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note), MenuProvider {
         }
     }
 
-
-    private fun deleteNote(){
+    private fun deleteNote() {
         AlertDialog.Builder(activity).apply {
             setTitle("Delete Note.")
             setMessage("Are you sure you want to delete this note?")
-            setPositiveButton("Yes"){
-                    _,_ ->
+            setPositiveButton("Yes") { _, _ ->
                 noteViewModel.deleteNote(currentNote)
                 view?.findNavController()?.popBackStack(R.id.homeFragment, false)
                 Toast.makeText(context, "Note Deleted!", Toast.LENGTH_SHORT).show()
@@ -88,8 +85,8 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note), MenuProvider {
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-        return when(menuItem.itemId){
-            R.id.delete ->{
+        return when (menuItem.itemId) {
+            R.id.delete -> {
                 deleteNote()
                 true
             }

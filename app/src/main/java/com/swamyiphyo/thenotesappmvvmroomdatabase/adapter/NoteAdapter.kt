@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.swamyiphyo.thenotesappmvvmroomdatabase.R
 import com.swamyiphyo.thenotesappmvvmroomdatabase.databinding.ListNotesBinding
+import com.swamyiphyo.thenotesappmvvmroomdatabase.fragments.HomeFragmentDirections
 import com.swamyiphyo.thenotesappmvvmroomdatabase.model.Note
 
 
@@ -45,7 +46,8 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
         holder.binding.textViewContent.text = currentNote.noteContent
 
         holder.itemView.setOnClickListener (){
-            it.findNavController().navigate(R.id.action_homeFragment_to_editNoteFragment)
+            val direction = HomeFragmentDirections.actionHomeFragmentToEditNoteFragment(currentNote)
+            it.findNavController().navigate(direction)
         }
     }
 }
