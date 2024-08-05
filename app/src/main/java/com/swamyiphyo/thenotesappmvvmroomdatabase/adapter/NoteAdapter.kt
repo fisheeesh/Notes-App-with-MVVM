@@ -44,6 +44,7 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
         val currentNote = differ.currentList[position]
 
         holder.binding.textViewTitle.text = currentNote.noteTitle
+        holder.binding.textViewTitle.isSelected = true
         holder.binding.textViewContent.text = currentNote.noteContent
         val animation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.translate_anim)
         holder.itemView.animation = animation
