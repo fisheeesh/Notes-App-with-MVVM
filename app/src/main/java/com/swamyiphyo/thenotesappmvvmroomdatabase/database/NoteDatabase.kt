@@ -8,7 +8,7 @@ import com.swamyiphyo.thenotesappmvvmroomdatabase.model.Note
 
 @Database(entities = [Note::class], version = 1)
 abstract class NoteDatabase : RoomDatabase(){
-    //which declare the instance of noteDAO
+    //which declare the instance of Note Dao interface
     abstract fun getNoteDao() : NoteDao
 
     companion object{
@@ -23,7 +23,6 @@ abstract class NoteDatabase : RoomDatabase(){
                 instance = it
             }
         }
-
         private fun createDatabase(context: Context) =
             Room.databaseBuilder(
                 context.applicationContext,
@@ -31,5 +30,4 @@ abstract class NoteDatabase : RoomDatabase(){
                 "note_db"
             ).build()
     }
-
 }

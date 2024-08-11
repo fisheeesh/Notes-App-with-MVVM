@@ -29,7 +29,7 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note), MenuProvider {
     private lateinit var noteViewModel: NoteViewModel
     private lateinit var currentNote: Note
 
-    private val args: EditNoteFragmentArgs by navArgs()
+    private val args : EditNoteFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,7 +46,7 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note), MenuProvider {
 
         noteViewModel = (activity as MainActivity).noteViewModel
 
-        currentNote = args.note!! ?: return
+        currentNote = args.note!!
 
         binding.editTextTitleUpdate.setText(currentNote.noteTitle)
         binding.editTextContentUpdate.setText(currentNote.noteContent)

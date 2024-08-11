@@ -10,6 +10,5 @@ class NoteViewModelFactory(val app : Application, private val noteRepo : NoteRep
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return NoteViewModel(app, noteRepo) as T
-
     }
 }
